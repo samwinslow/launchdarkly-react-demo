@@ -1,24 +1,16 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
+import { withLDProvider } from 'launchdarkly-react-client-sdk'
+import ExampleComponent from './ExampleComponent'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ExampleComponent />
     </div>
-  );
+  )
 }
 
-export default App;
+export default withLDProvider({
+  clientSideID: process.env.REACT_APP_LD_CLIENT_ID || '',
+  options: {}
+})(App)
